@@ -16,7 +16,7 @@ Your cart
         {% if list_empty %}
         Nothing added to cart
         {% else %}
-        <form>
+        
         <table class="table"> 
             <thead>
                 <th></th>
@@ -28,17 +28,19 @@ Your cart
               {% for dish in dishes %}
               <tr>
                 {% if dish.added_to_cart %}
+                <form action="/{{dish.name}}/change" method="POST">
+                  {% csrf_token %}
                 <td><a href="/{{dish.name}}/remove" class="btn btn-outline-primary">Remove item</a></td>
                 <td>{{dish.name}}</td>
                 <td><input type="number" id="quantity" name="quantity" min="1" max="10" value="{{dish.quantity}}"></td>
                 <td style="width: 10%;"><input type="submit" class="btn btn-outline-primary" value="Save"></td>
+              </form>
                 {% endif %}
               </tr>
               {% endfor %}
             </tbody>
           </table>
           <input type="submit" class="btn btn-outline-primary" value="Place Order">
-        </form>
         {% endif %}
     </div>
 </div>

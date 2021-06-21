@@ -31,4 +31,12 @@ def remove(request, dish_name):
     return render(request, 'menu/cart.html', {
         'dishes' : Dish.objects.all()
     })
+
+def change(request, dish_name):
+    if request.method == "POST":
+        new_quantity = request.POST["quantity"]
+        Dish.objects.filter(name=dish_name).update(quantity = new_quantity)
+        return render(request, 'menu/cart.html', {
+        'dishes' : Dish.objects.all()
+    })
         

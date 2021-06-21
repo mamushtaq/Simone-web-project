@@ -1,1 +1,59 @@
-This is homepage
+{% extends "menu/layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h4 class="my-0 mr-md-auto font-weight-normal">Company name</h4>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-dark" href="#">Company name</a>
+      <a class="p-2 text-dark" href="#">What we offer</a>
+      <a class="p-2 text-dark" href="#">Contact us</a>
+    </nav>
+    <a class="btn btn-outline-primary" href="{% url 'cart' %}">Your Cart</a>
+  </div>
+<div class="page">
+    <div class="content">
+        <h1 class="heading"><strong>Company Name</strong></h1>
+        <img class="central-image" src="https://media-public.canva.com/MACNTOfeGgo/1/screen_2x.jpg">
+        <i class="italic">Delicious food for every mood</i>
+    </div>
+</div>
+<div class="what-we-serve">
+    <div class="content1">
+        <h1 class="heading"><strong>What we serve</strong></h1>
+        <hr>
+        <table class="table">
+            <tbody>
+              {% for dish in dishes %}
+              <tr>
+                  {% csrf_token %}
+                  <td>{{dish.name}}</td>
+                  <td>${{dish.price}}</td>
+                  {% if dish.added_to_cart %}
+                  <td>Added to cart</td>
+                  {% else %}
+                  <td><a href="/{{dish.name}}/add"><button class="btn btn-outline-primary">Add to cart</button></a></td>
+                  {% endif %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+<div class="contact">
+    <div class="content1">
+        <h1 class="heading"><strong>Contact us</strong></h1>
+        <hr>
+
+        <strong>Mailing Address</strong> <br>
+        123 Anywhere St., Any City, State, Country 12345 <br><hr>
+        <strong>Email Address</strong><br>
+        hello@example.com <br><hr>
+        <strong>Phone Number</strong><br>
+        (123) 456 7890 <hr>
+    </div>
+</div>
+{% endblock%}

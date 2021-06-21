@@ -1,0 +1,45 @@
+{% extends "menu/layout.html" %}
+
+{% block title %}
+Your cart
+{% endblock %}
+
+{% block body %}
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h4 class="my-0 mr-md-auto font-weight-normal">Company name</h4>
+    <a class="btn btn-outline-primary" style="margin-right: 5px; margin-left: auto;" href="{% url 'menu' %}">Home</a>
+  </div>
+  <div class="what-we-serve">
+    <div class="content1">
+        <h1 class="heading"><strong>Your Cart</strong></h1>
+        <hr>
+        {% if list_empty %}
+        Nothing added to cart
+        {% else %}
+        <form>
+        <table class="table"> 
+            <thead>
+                <th></th>
+                <th></th>
+                <th>Quantity</th>
+                <th></th>
+            </thead>
+            <tbody>
+              {% for dish in dishes %}
+              <tr>
+                {% if dish.added_to_cart %}
+                <td><a href="/{{dish.name}}/remove" class="btn btn-outline-primary">Remove item</a></td>
+                <td>{{dish.name}}</td>
+                <td><input type="number" id="quantity" name="quantity" min="1" max="10" value="{{dish.quantity}}"></td>
+                <td style="width: 10%;"><input type="submit" class="btn btn-outline-primary" value="Save"></td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <input type="submit" class="btn btn-outline-primary" value="Place Order">
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

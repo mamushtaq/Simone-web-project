@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+        <style>
+            .d-flex {
+                font-size: larger;
+            }
+            .p-2{
+                text-decoration: none;
+                opacity: 50%;
+            }
+            .p-2:hover{
+                opacity: 100%;
+            }
+            .my-2{
+                margin-right: 2%;
+                margin-left: auto;
+            }
+            .page {
+                background: linear-gradient(90deg, #d5c3a9 50%, white 50%);
+            }
+            .content {
+                font-family: playfair display Black;
+                width: 70%;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 5%;
+                text-align: center;
+                font-size: 25px;
+            }
+            .heading {
+                font-size: 70px;
+                margin-bottom: 5%;
+            }
+            .central-image {
+                width: 100%; /* width of container */
+                height: 400px; /* height of container */
+                object-fit: cover;
+                object-position: 20% 10%; /* try 20px 10px */ 
+                margin-bottom: 5%;
+            }
+            .what-we-serve {
+                background-image: url("https://media-public.canva.com/MABz3h2ZlLc/1/screen_2x.jpg");
+                padding: 5%;
+            }
+            .content1 {
+                font-family: playfair display black;
+                width: 70%;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 5%;
+                text-align: center;
+                font-size: 25px;
+                margin-bottom: 5%;
+                background-color: white;
+            }
+            .contact {
+                background-image: url("https://media-public.canva.com/MABwhrn1KZE/1/screen_2x.jpg");
+                padding: 5%;
+            }
+        </style>
+    </head>
+    <body>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

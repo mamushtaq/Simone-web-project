@@ -12,7 +12,7 @@ socket.getaddrinfo('localhost', 8080)
 # From here is code to retrieve email
 
 user_address = 'simootest1998@gmail.com'
-user_password = 'Djangoproject1998'
+user_password = ''
 
 mail = imaplib.IMAP4_SSL('imap.gmail.com')
 mail.login(user_address, user_password)
